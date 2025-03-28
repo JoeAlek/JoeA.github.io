@@ -1,0 +1,163 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<section class="about-hero bg-dark text-white py-5">
+    <div class="container">
+        <div class="text-center">
+            <h1 class="display-5 fw-bold mb-4">About JoeA</h1>
+            <p class="lead mb-0">Learn more about our mission and the team behind JoeA</p>
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="card bg-dark border-secondary">
+                    <div class="card-body">
+                        <h2 class="card-title mb-4">Our Story</h2>
+                        <p class="lead text-light">JoeA was created to address the growing need for effective Discord server management tools that anyone can use, regardless of technical experience.</p>
+                        
+                        <p class="text-light">What started as a personal project by Joseph Alekberov quickly grew into a comprehensive Discord bot platform serving thousands of servers worldwide. As Discord communities expanded, Joseph recognized the need for tools that could handle moderation, user engagement, and server management without requiring coding knowledge.</p>
+                        
+                        <p class="text-light">Our mission is to provide Discord server owners with powerful, easy-to-use tools that enhance community engagement, ensure server security, and automate repetitive tasks. We believe that community management should be accessible to everyone, which is why JoeA combines powerful features with an intuitive interface.</p>
+                        
+                        <h3 class="mt-5 mb-3">Technology</h3>
+                        <p class="text-light">JoeA leverages the latest advancements in artificial intelligence, powered by Gemini AI, to deliver intelligent and context-aware responses. Our platform is built on a robust infrastructure that ensures 24/7 uptime and fast response times.</p>
+                        
+                        <div class="d-flex align-items-center mt-5">
+                            <img src="{{ url_for('static', filename='images/joseph-profile.svg') }}" alt="Joseph Alekberov" class="rounded-circle me-4" style="width: 100px; height: 100px;">
+                            <div>
+                                <h4 class="mb-1">Joseph Alekberov</h4>
+                                <p class="text-muted mb-2">Founder & Developer</p>
+                                <p class="mb-0 text-light">Joseph is a software engineer with a passion for creating tools that help online communities thrive. With expertise in AI and automation, he designed JoeA to address the real needs of Discord server administrators.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5 bg-dark-subtle">
+    <div class="container">
+        <h2 class="text-center mb-5">Powered By</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-4 col-lg-3 mb-4">
+                <div class="card bg-dark h-100 text-center">
+                    <div class="card-body">
+                        <img src="{{ url_for('static', filename='images/gemini-ai.svg') }}" alt="Gemini AI" class="img-fluid mb-3" style="height: 60px;">
+                        <h5>Gemini AI</h5>
+                        <p class="text-light">Advanced AI model powering intelligent conversations</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-3 mb-4">
+                <div class="card bg-dark h-100 text-center">
+                    <div class="card-body">
+                        <img src="{{ url_for('static', filename='images/discord-logo.svg') }}" alt="Discord API" class="img-fluid mb-3" style="height: 60px;">
+                        <h5>Discord API</h5>
+                        <p class="text-light">Seamless integration with Discord platform</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-3 mb-4">
+                <div class="card bg-dark h-100 text-center">
+                    <div class="card-body">
+                        <img src="{{ url_for('static', filename='images/cloud-server.svg') }}" alt="Cloud Infrastructure" class="img-fluid mb-3" style="height: 60px;">
+                        <h5>Cloud Infrastructure</h5>
+                        <p class="text-light">Reliable hosting ensuring 24/7 availability</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="testimonials py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">What Our Users Say</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card bg-dark border-secondary h-100">
+                    <div class="card-body">
+                        <div class="d-flex mb-3">
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                        </div>
+                        <p class="card-text text-light">"JoeA has completely transformed our gaming community. The moderation tools alone have saved us countless hours of work."</p>
+                        <div class="d-flex align-items-center mt-3">
+                            <div class="avatar bg-primary text-white rounded-circle me-3 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                <span>MG</span>
+                            </div>
+                            <div>
+                                <h6 class="mb-0">Mike G.</h6>
+                                <small class="text-muted">Gaming Community Admin</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card bg-dark border-secondary h-100">
+                    <div class="card-body">
+                        <div class="d-flex mb-3">
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                        </div>
+                        <p class="card-text text-light">"The AI chat feature is incredibly responsive and keeps our members engaged. The customizable welcome messages are also a nice touch!"</p>
+                        <div class="d-flex align-items-center mt-3">
+                            <div class="avatar bg-success text-white rounded-circle me-3 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                <span>SJ</span>
+                            </div>
+                            <div>
+                                <h6 class="mb-0">Sarah J.</h6>
+                                <small class="text-muted">Community Manager</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card bg-dark border-secondary h-100">
+                    <div class="card-body">
+                        <div class="d-flex mb-3">
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                        </div>
+                        <p class="card-text text-light">"As someone with minimal technical experience, I appreciate how user-friendly JoeA is. Setting up auto-roles and moderation was surprisingly easy."</p>
+                        <div class="d-flex align-items-center mt-3">
+                            <div class="avatar bg-info text-white rounded-circle me-3 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                <span>DT</span>
+                            </div>
+                            <div>
+                                <h6 class="mb-0">David T.</h6>
+                                <small class="text-muted">Small Server Owner</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-about bg-primary text-white py-5 text-center">
+    <div class="container">
+        <h2 class="mb-4">Ready to join the JoeA community?</h2>
+        <p class="lead mb-4">Add JoeA to your Discord server today and experience the difference</p>
+        <a href="https://discord.com/api/oauth2/authorize?client_id=1353473608059584515&permissions=8&scope=bot" class="btn btn-light btn-lg px-5 text-primary">Add to Discord</a>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <defs>
+    <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+      <rect width="50" height="50" fill="none"/>
+      <path d="M0,0 L50,50" stroke="#5865F2" stroke-width="0.5" stroke-opacity="0.3"/>
+      <path d="M50,0 L0,50" stroke="#5865F2" stroke-width="0.5" stroke-opacity="0.3"/>
+    </pattern>
+  </defs>
+  
+  <rect width="100%" height="100%" fill="url(#grid)" />
+  
+  <!-- Discord Logo Elements (scattered) -->
+  <path d="M200,150 C180,130 170,130 170,130 L160,140 C170,145 175,150 175,150" fill="none" stroke="#5865F2" stroke-width="2" />
+  <path d="M580,420 C560,400 550,400 550,400 L540,410 C550,415 555,420 555,420" fill="none" stroke="#5865F2" stroke-width="2" />
+  <path d="M120,350 C100,330 90,330 90,330 L80,340 C90,345 95,350 95,350" fill="none" stroke="#5865F2" stroke-width="2" />
+  <path d="M650,200 C630,180 620,180 620,180 L610,190 C620,195 625,200 625,200" fill="none" stroke="#5865F2" stroke-width="2" />
+  
+  <!-- Circuitry Pattern Elements -->
+  <circle cx="100" cy="100" r="5" fill="#5865F2" opacity="0.5" />
+  <circle cx="300" cy="200" r="5" fill="#5865F2" opacity="0.5" />
+  <circle cx="500" cy="150" r="5" fill="#5865F2" opacity="0.5" />
+  <circle cx="700" cy="300" r="5" fill="#5865F2" opacity="0.5" />
+  <circle cx="200" cy="400" r="5" fill="#5865F2" opacity="0.5" />
+  <circle cx="400" cy="500" r="5" fill="#5865F2" opacity="0.5" />
+  <circle cx="600" cy="450" r="5" fill="#5865F2" opacity="0.5" />
+  <circle cx="150" cy="250" r="5" fill="#5865F2" opacity="0.5" />
+  <circle cx="350" cy="350" r="5" fill="#5865F2" opacity="0.5" />
+  <circle cx="550" cy="250" r="5" fill="#5865F2" opacity="0.5" />
+  <circle cx="650" cy="100" r="5" fill="#5865F2" opacity="0.5" />
+  <circle cx="250" cy="500" r="5" fill="#5865F2" opacity="0.5" />
+  <circle cx="450" cy="400" r="5" fill="#5865F2" opacity="0.5" />
+  
+  <!-- Connecting Lines -->
+  <line x1="100" y1="100" x2="200" y2="150" stroke="#5865F2" stroke-width="1" stroke-opacity="0.3" />
+  <line x1="300" y1="200" x2="350" y2="350" stroke="#5865F2" stroke-width="1" stroke-opacity="0.3" />
+  <line x1="500" y1="150" x2="550" y2="250" stroke="#5865F2" stroke-width="1" stroke-opacity="0.3" />
+  <line x1="700" y1="300" x2="650" y2="200" stroke="#5865F2" stroke-width="1" stroke-opacity="0.3" />
+  <line x1="200" y1="400" x2="250" y2="500" stroke="#5865F2" stroke-width="1" stroke-opacity="0.3" />
+  <line x1="400" y1="500" x2="450" y2="400" stroke="#5865F2" stroke-width="1" stroke-opacity="0.3" />
+  <line x1="600" y1="450" x2="550" y2="400" stroke="#5865F2" stroke-width="1" stroke-opacity="0.3" />
+  <line x1="150" y1="250" x2="100" y2="350" stroke="#5865F2" stroke-width="1" stroke-opacity="0.3" />
+  
+  <!-- Code-like Elements -->
+  <text x="125" y="130" font-family="monospace" font-size="12" fill="#5865F2" opacity="0.6">function bot() {</text>
+  <text x="450" y="380" font-family="monospace" font-size="12" fill="#5865F2" opacity="0.6">while(online) {</text>
+  <text x="570" y="230" font-family="monospace" font-size="12" fill="#5865F2" opacity="0.6">if(message) {</text>
+  <text x="320" y="180" font-family="monospace" font-size="12" fill="#5865F2" opacity="0.6">await reply();</text>
+  <text x="220" y="490" font-family="monospace" font-size="12" fill="#5865F2" opacity="0.6">return response;</text>
+</svg>

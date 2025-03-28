@@ -1,0 +1,141 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<section class="hero text-white py-5">
+    <div class="blur-circle blur-circle-purple" style="width: 400px; height: 400px; top: -100px; right: -100px;"></div>
+    <div class="blur-circle blur-circle-pink" style="width: 350px; height: 350px; bottom: -50px; left: -100px;"></div>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 animate-left">
+                <h1 class="display-4 fw-bold mb-4 gradient-text glow-text">Supercharge Your Discord Server</h1>
+                <p class="lead mb-4">JoeA is an advanced Discord bot with AI-powered chat, moderation tools, and server management features to keep your community engaged and secure.</p>
+                <div class="d-flex gap-3">
+                    <a href="https://discord.com/api/oauth2/authorize?client_id=1353473608059584515&permissions=8&scope=bot" class="btn btn-primary btn-lg px-4 animate-in animate-delay-1">Add to Discord</a>
+                    <a href="{{ url_for('features') }}" class="btn btn-outline-light btn-lg px-4 animate-in animate-delay-2">Learn More</a>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center mt-5 mt-lg-0 animate-right">
+                <div class="position-relative">
+                    <div class="position-absolute" style="top: -30px; left: 40px; width: 120px; height: 120px; background: var(--accent-color); opacity: 0.1; filter: blur(40px); border-radius: 50%;"></div>
+                    <div class="position-absolute" style="bottom: 30px; right: 40px; width: 150px; height: 150px; background: var(--primary-color); opacity: 0.15; filter: blur(40px); border-radius: 50%;"></div>
+                    <img src="{{ url_for('static', filename='images/bot-illustration.svg') }}" alt="JoeA Discord Bot" class="img-fluid position-relative" style="max-height: 400px; z-index: 2;">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="features py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="gradient-text fw-bold mb-2">Why Choose JoeA?</h2>
+            <div class="section-divider"></div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-4 animate-up animate-delay-1">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-robot fa-2x text-light"></i>
+                        </div>
+                        <h3 class="card-title fw-bold mb-3">AI-Powered Chat</h3>
+                        <p class="card-text text-light">Engage your community with intelligent AI conversations powered by Google's Gemini Pro 2.5 Experimental model.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 animate-up animate-delay-2">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-shield-alt fa-2x text-light"></i>
+                        </div>
+                        <h3 class="card-title fw-bold mb-3">Advanced Moderation</h3>
+                        <p class="card-text text-light">Keep your server safe with automated moderation tools that detect spam, profanity, and rule violations.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 animate-up animate-delay-3">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-chart-line fa-2x text-light"></i>
+                        </div>
+                        <h3 class="card-title fw-bold mb-3">User Analytics</h3>
+                        <p class="card-text text-light">Track user activity and engagement with comprehensive analytics to help grow your community.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="commands py-5">
+    <div class="bg-glass py-5" style="position: relative; overflow: hidden;">
+        <div class="blur-circle blur-circle-blue" style="width: 300px; height: 300px; top: -50px; left: 150px;"></div>
+        <div class="blur-circle blur-circle-purple" style="width: 250px; height: 250px; bottom: -50px; right: 100px;"></div>
+        <div class="container position-relative">
+            <div class="text-center mb-5">
+                <h2 class="gradient-text fw-bold mb-2">Popular Commands</h2>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="table-responsive animate-up">
+                <table class="table table-custom table-dark">
+                    <thead>
+                        <tr>
+                            <th>Command</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>!register</code></td>
+                            <td class="text-light">Register yourself with the bot</td>
+                        </tr>
+                        <tr>
+                            <td><code>!chat [message]</code></td>
+                            <td class="text-light">Start a conversation with the AI</td>
+                        </tr>
+                        <tr>
+                            <td><code>!news</code></td>
+                            <td class="text-light">Get information about an important world event</td>
+                        </tr>
+                        <tr>
+                            <td><code>!weather [city]</code></td>
+                            <td class="text-light">View current weather for a city</td>
+                        </tr>
+                        <tr>
+                            <td><code>!translate [language] [text]</code></td>
+                            <td class="text-light">Translate text to another language</td>
+                        </tr>
+                        <tr>
+                            <td><code>!commands</code></td>
+                            <td class="text-light">View all available commands</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="text-center mt-4">
+                    <a href="{{ url_for('command_list') }}" class="btn btn-outline-light">View All Commands</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta py-5 text-center" style="position: relative; overflow: hidden;">
+    <div class="blur-circle blur-circle-purple" style="width: 500px; height: 500px; top: -250px; left: -100px;"></div>
+    <div class="blur-circle blur-circle-pink" style="width: 450px; height: 450px; bottom: -200px; right: -100px;"></div>
+    <div class="container position-relative py-5">
+        <h2 class="gradient-text fw-bold mb-4 animate-up">Ready to Transform Your Discord Server?</h2>
+        <p class="lead mb-5 animate-up animate-delay-1">Join thousands of servers already using JoeA to enhance their Discord experience.</p>
+        <div class="animate-up animate-delay-2">
+            <a href="https://discord.com/api/oauth2/authorize?client_id=1353473608059584515&permissions=8&scope=bot" class="btn btn-primary btn-lg px-5 py-3">
+                <i class="fab fa-discord me-2"></i> Add to Discord Now
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

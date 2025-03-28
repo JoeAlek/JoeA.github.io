@@ -1,0 +1,142 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<section class="status-hero bg-dark text-white py-5">
+    <div class="container">
+        <div class="text-center">
+            <h1 class="display-5 fw-bold mb-4">System Status</h1>
+            <p class="lead mb-0">Check the operational status of JoeA's services</p>
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-lg-6 mx-auto">
+                <div class="card bg-dark border-secondary">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between mb-4">
+                            <h2 class="card-title mb-0">Service Status</h2>
+                            <div class="status-indicator" id="overallStatus">
+                                <span class="badge bg-secondary">Checking...</span>
+                            </div>
+                        </div>
+                        
+                        <div class="table-responsive">
+                            <table class="table table-dark border-secondary">
+                                <tbody>
+                                    <tr>
+                                        <td>Discord Bot</td>
+                                        <td class="text-end" id="discordStatus">
+                                            <span class="badge bg-secondary">Checking...</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Web Dashboard</td>
+                                        <td class="text-end" id="dashboardStatus">
+                                            <span class="badge bg-success">Operational</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Database</td>
+                                        <td class="text-end" id="databaseStatus">
+                                            <span class="badge bg-secondary">Checking...</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>AI Service</td>
+                                        <td class="text-end" id="aiStatus">
+                                            <span class="badge bg-secondary">Checking...</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <p class="text-muted mt-3 mb-0">Last updated: <span id="lastUpdated">Checking...</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="card bg-dark border-secondary">
+                    <div class="card-body">
+                        <h3 class="card-title mb-4">System Metrics</h3>
+                        
+                        <div class="row g-4">
+                            <div class="col-md-4">
+                                <div class="stat-card bg-dark-subtle rounded">
+                                    <h5>Uptime</h5>
+                                    <h3 id="uptimeMetric">99.9%</h3>
+                                    <p class="text-muted">Last 30 days</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="stat-card bg-dark-subtle rounded">
+                                    <h5>Response Time</h5>
+                                    <h3 id="responseTimeMetric">0.8s</h3>
+                                    <p class="text-muted">Average</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="stat-card bg-dark-subtle rounded">
+                                    <h5>Commands</h5>
+                                    <h3 id="commandCountMetric">15K+</h3>
+                                    <p class="text-muted">Processed today</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h4 class="mt-5 mb-3">Scheduled Maintenance</h4>
+                        <p>No scheduled maintenance at this time.</p>
+                        
+                        <h4 class="mt-4 mb-3">Recent Incidents</h4>
+                        <div class="list-group bg-transparent">
+                            <div class="list-group-item bg-dark border-secondary">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5 class="mb-1">All Systems Operational</h5>
+                                    <span class="badge bg-success">Resolved</span>
+                                </div>
+                                <p class="mb-1">Our services are operating normally. If you're experiencing issues, please check your connection or contact support.</p>
+                                <small class="text-muted">Last incident: March 20, 2025</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Update status checks
+    fetch('/api/status')
+      .then(response => response.json())
+      .then(data => {
+        if (data.status === 'online') {
+          document.getElementById('overallStatus').innerHTML = '<span class="badge bg-success">All Systems Operational</span>';
+          document.getElementById('discordStatus').innerHTML = '<span class="badge bg-success">Online</span>';
+          document.getElementById('databaseStatus').innerHTML = '<span class="badge bg-success">Connected</span>';
+          document.getElementById('aiStatus').innerHTML = '<span class="badge bg-success">Responding</span>';
+        } else {
+          document.getElementById('overallStatus').innerHTML = '<span class="badge bg-warning">Partial Outage</span>';
+          document.getElementById('discordStatus').innerHTML = '<span class="badge bg-warning">Issues Detected</span>';
+        }
+        
+        // Update last checked time
+        const now = new Date();
+        document.getElementById('lastUpdated').textContent = now.toLocaleString();
+      })
+      .catch(error => {
+        console.error('Error fetching status:', error);
+        document.getElementById('overallStatus').innerHTML = '<span class="badge bg-warning">Status Check Failed</span>';
+      });
+  });
+</script>
+{% endblock %}

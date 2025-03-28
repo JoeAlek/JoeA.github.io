@@ -1,0 +1,623 @@
+{% extends "layout.html" %}
+
+{% block extra_head %}
+<style>
+    .feature-toggle {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 30px;
+    }
+    
+    .feature-toggle input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+    
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(255, 255, 255, 0.1);
+        transition: .4s;
+        border-radius: 34px;
+    }
+    
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 22px;
+        width: 22px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        transition: .4s;
+        border-radius: 50%;
+    }
+    
+    input:checked + .slider {
+        background: var(--gradient-primary);
+    }
+    
+    input:checked + .slider:before {
+        transform: translateX(30px);
+    }
+    
+    .dashboard-nav {
+        border-radius: 12px;
+        overflow: hidden;
+        margin-bottom: 2rem;
+    }
+    
+    .dashboard-nav .nav-link {
+        font-weight: 500;
+        padding: 1rem 1.5rem;
+        color: var(--light-color);
+        border-bottom: 2px solid transparent;
+    }
+    
+    .dashboard-nav .nav-link.active {
+        background: rgba(255, 255, 255, 0.05);
+        border-bottom: 2px solid var(--accent-color);
+        color: var(--accent-color);
+    }
+    
+    .server-select {
+        background: rgba(24, 23, 46, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+        color: white;
+        padding: 0.75rem;
+    }
+    
+    .settings-panel {
+        transition: all 0.3s ease;
+    }
+
+    .tab-content {
+        min-height: 400px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="features-hero py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h1 class="gradient-text fw-bold mb-3">Server Dashboard</h1>
+            <p class="lead">Customize your server settings and enable powerful features</p>
+            <div class="section-divider"></div>
+        </div>
+    </div>
+</section>
+
+<section class="py-4">
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <div class="d-flex align-items-center">
+                    <div class="me-3">
+                        <i class="fas fa-server fa-2x text-light"></i>
+                    </div>
+                    <div>
+                        <p class="mb-1 text-muted">Current Server</p>
+                        <select class="form-select server-select">
+                            <option selected>ChatGPT</option>
+                            <option>JoeA Support</option>
+                            <option>Gaming Community</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 text-md-end mt-3 mt-md-0">
+                <button class="btn btn-primary px-4">
+                    <i class="fas fa-save me-2"></i> Save Changes
+                </button>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-12">
+                <nav class="dashboard-nav bg-glass">
+                    <div class="nav nav-tabs border-0" id="nav-tab" role="tablist">
+                        <button class="nav-link active" id="nav-general-tab" data-bs-toggle="tab" data-bs-target="#nav-general" type="button" role="tab" aria-controls="nav-general" aria-selected="true">
+                            <i class="fas fa-cog me-2"></i> General
+                        </button>
+                        <button class="nav-link" id="nav-moderation-tab" data-bs-toggle="tab" data-bs-target="#nav-moderation" type="button" role="tab" aria-controls="nav-moderation" aria-selected="false">
+                            <i class="fas fa-shield-alt me-2"></i> Moderation
+                        </button>
+                        <button class="nav-link" id="nav-welcome-tab" data-bs-toggle="tab" data-bs-target="#nav-welcome" type="button" role="tab" aria-controls="nav-welcome" aria-selected="false">
+                            <i class="fas fa-door-open me-2"></i> Welcome
+                        </button>
+                        <button class="nav-link" id="nav-autorole-tab" data-bs-toggle="tab" data-bs-target="#nav-autorole" type="button" role="tab" aria-controls="nav-autorole" aria-selected="false">
+                            <i class="fas fa-user-tag me-2"></i> Auto Role
+                        </button>
+                    </div>
+                </nav>
+                
+                <div class="tab-content bg-glass p-4 rounded-3" id="nav-tabContent">
+                    <!-- General Tab -->
+                    <div class="tab-pane fade show active" id="nav-general" role="tabpanel" aria-labelledby="nav-general-tab">
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <h4 class="gradient-text mb-4">General Settings</h4>
+                            </div>
+                        </div>
+                        
+                        <!-- General Settings List -->
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <div class="card bg-glass h-100">
+                                    <div class="card-body">
+                                        <!-- AI Chat -->
+                                        <div class="d-flex justify-content-between align-items-center py-3 border-bottom border-secondary">
+                                            <div>
+                                                <h5 class="mb-1">AI Chat</h5>
+                                                <p class="text-muted mb-0 small">Enable AI-powered chat responses in your server</p>
+                                            </div>
+                                            <label class="feature-toggle">
+                                                <input type="checkbox" checked>
+                                                <span class="slider"></span>
+                                            </label>
+                                        </div>
+                                        
+                                        <!-- Logging System -->
+                                        <div class="d-flex justify-content-between align-items-center py-3 border-bottom border-secondary">
+                                            <div>
+                                                <h5 class="mb-1">Logging System</h5>
+                                                <p class="text-muted mb-0 small">Track message edits, deletions, and user activities</p>
+                                            </div>
+                                            <label class="feature-toggle">
+                                                <input type="checkbox" checked>
+                                                <span class="slider"></span>
+                                            </label>
+                                        </div>
+                                        
+                                        <!-- User Statistics -->
+                                        <div class="d-flex justify-content-between align-items-center py-3 border-bottom border-secondary">
+                                            <div>
+                                                <h5 class="mb-1">User Statistics</h5>
+                                                <p class="text-muted mb-0 small">Collect analytics on user engagement and activity</p>
+                                            </div>
+                                            <label class="feature-toggle">
+                                                <input type="checkbox" checked>
+                                                <span class="slider"></span>
+                                            </label>
+                                        </div>
+                                        
+                                        <!-- Customizable Reactions -->
+                                        <div class="d-flex justify-content-between align-items-center py-3 border-bottom border-secondary">
+                                            <div>
+                                                <h5 class="mb-1">Auto Reactions</h5>
+                                                <p class="text-muted mb-0 small">Automatically react to keywords in messages</p>
+                                            </div>
+                                            <label class="feature-toggle">
+                                                <input type="checkbox">
+                                                <span class="slider"></span>
+                                            </label>
+                                        </div>
+                                        
+                                        <!-- Level System -->
+                                        <div class="d-flex justify-content-between align-items-center py-3">
+                                            <div>
+                                                <h5 class="mb-1">Level System</h5>
+                                                <p class="text-muted mb-0 small">Enable XP and leveling for active users</p>
+                                            </div>
+                                            <label class="feature-toggle">
+                                                <input type="checkbox">
+                                                <span class="slider"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Command Prefix -->
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <div class="card bg-glass h-100">
+                                    <div class="card-body">
+                                        <h5 class="mb-3">Command Prefix</h5>
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control bg-dark text-light border-secondary" value="!" placeholder="Enter command prefix">
+                                            <button class="btn btn-primary" type="button">Update</button>
+                                        </div>
+                                        <p class="text-muted small mb-0">The prefix used to trigger bot commands (default: !)</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Log Channel -->
+                            <div class="col-md-6">
+                                <div class="card bg-glass h-100">
+                                    <div class="card-body">
+                                        <h5 class="mb-3">Log Channel</h5>
+                                        <select class="form-select bg-dark text-light border-secondary mb-3">
+                                            <option selected>bot-logs</option>
+                                            <option>general</option>
+                                            <option>server-logs</option>
+                                            <option>admin-only</option>
+                                        </select>
+                                        <p class="text-muted small mb-0">Channel where bot logs and events will be posted</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Moderation Tab -->
+                    <div class="tab-pane fade" id="nav-moderation" role="tabpanel" aria-labelledby="nav-moderation-tab">
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <h4 class="gradient-text mb-4">Moderation Settings</h4>
+                            </div>
+                        </div>
+                        
+                        <!-- Moderation Features -->
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <div class="card bg-glass h-100">
+                                    <div class="card-body">
+                                        <!-- Auto Moderation -->
+                                        <div class="d-flex justify-content-between align-items-center py-3 border-bottom border-secondary">
+                                            <div>
+                                                <h5 class="mb-1">Auto Moderation</h5>
+                                                <p class="text-muted mb-0 small">Automatically detect and handle rule violations</p>
+                                            </div>
+                                            <label class="feature-toggle">
+                                                <input type="checkbox" checked>
+                                                <span class="slider"></span>
+                                            </label>
+                                        </div>
+                                        
+                                        <!-- Profanity Filter -->
+                                        <div class="d-flex justify-content-between align-items-center py-3 border-bottom border-secondary">
+                                            <div>
+                                                <h5 class="mb-1">Profanity Filter</h5>
+                                                <p class="text-muted mb-0 small">Filter and remove offensive language</p>
+                                            </div>
+                                            <label class="feature-toggle">
+                                                <input type="checkbox" checked>
+                                                <span class="slider"></span>
+                                            </label>
+                                        </div>
+                                        
+                                        <!-- Anti-Spam -->
+                                        <div class="d-flex justify-content-between align-items-center py-3 border-bottom border-secondary">
+                                            <div>
+                                                <h5 class="mb-1">Anti-Spam</h5>
+                                                <p class="text-muted mb-0 small">Prevent message spam and flooding</p>
+                                            </div>
+                                            <label class="feature-toggle">
+                                                <input type="checkbox" checked>
+                                                <span class="slider"></span>
+                                            </label>
+                                        </div>
+                                        
+                                        <!-- URL Filter -->
+                                        <div class="d-flex justify-content-between align-items-center py-3 border-bottom border-secondary">
+                                            <div>
+                                                <h5 class="mb-1">URL Filter</h5>
+                                                <p class="text-muted mb-0 small">Control which URLs can be shared in your server</p>
+                                            </div>
+                                            <label class="feature-toggle">
+                                                <input type="checkbox">
+                                                <span class="slider"></span>
+                                            </label>
+                                        </div>
+                                        
+                                        <!-- Raid Protection -->
+                                        <div class="d-flex justify-content-between align-items-center py-3">
+                                            <div>
+                                                <h5 class="mb-1">Raid Protection</h5>
+                                                <p class="text-muted mb-0 small">Automatically detect and prevent server raids</p>
+                                            </div>
+                                            <label class="feature-toggle">
+                                                <input type="checkbox" checked>
+                                                <span class="slider"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Mod Roles & Commands -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card bg-glass h-100">
+                                    <div class="card-body">
+                                        <h5 class="mb-3">Moderator Roles</h5>
+                                        <select class="form-select bg-dark text-light border-secondary mb-3" multiple size="5">
+                                            <option selected>Admin</option>
+                                            <option selected>Moderator</option>
+                                            <option>Helper</option>
+                                            <option>Staff</option>
+                                            <option>Community Manager</option>
+                                        </select>
+                                        <button class="btn btn-primary btn-sm mt-2">Update Roles</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="card bg-glass h-100">
+                                    <div class="card-body">
+                                        <h5 class="mb-3">Command Permissions</h5>
+                                        <div class="mb-3">
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" id="ban-perm" checked>
+                                                <label class="form-check-label" for="ban-perm">Ban Command (Mods+)</label>
+                                            </div>
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" id="kick-perm" checked>
+                                                <label class="form-check-label" for="kick-perm">Kick Command (Mods+)</label>
+                                            </div>
+                                            <div class="form-check mb-2">
+                                                <input class="form-check-input" type="checkbox" id="clear-perm" checked>
+                                                <label class="form-check-label" for="clear-perm">Clear Messages (Mods+)</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Welcome Tab -->
+                    <div class="tab-pane fade" id="nav-welcome" role="tabpanel" aria-labelledby="nav-welcome-tab">
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <h4 class="gradient-text mb-4">Welcome & Farewell Settings</h4>
+                            </div>
+                        </div>
+                        
+                        <!-- Welcome Settings -->
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <div class="card bg-glass h-100">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center mb-3">
+                                            <h5 class="mb-0">Welcome Messages</h5>
+                                            <label class="feature-toggle">
+                                                <input type="checkbox" checked>
+                                                <span class="slider"></span>
+                                            </label>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <label class="form-label">Welcome Channel</label>
+                                            <select class="form-select bg-dark text-light border-secondary">
+                                                <option selected>welcome</option>
+                                                <option>general</option>
+                                                <option>introductions</option>
+                                            </select>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <label class="form-label">Welcome Message</label>
+                                            <textarea class="form-control bg-dark text-light border-secondary" rows="4">Welcome {user} to {server}! You are member #{count}. Please read our rules and enjoy your stay!</textarea>
+                                            <small class="text-muted">Variables: {user}, {server}, {count}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Farewell Settings -->
+                            <div class="col-md-6">
+                                <div class="card bg-glass h-100">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center mb-3">
+                                            <h5 class="mb-0">Farewell Messages</h5>
+                                            <label class="feature-toggle">
+                                                <input type="checkbox" checked>
+                                                <span class="slider"></span>
+                                            </label>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <label class="form-label">Farewell Channel</label>
+                                            <select class="form-select bg-dark text-light border-secondary">
+                                                <option selected>welcome</option>
+                                                <option>general</option>
+                                                <option>departures</option>
+                                            </select>
+                                        </div>
+                                        
+                                        <div class="mb-3">
+                                            <label class="form-label">Farewell Message</label>
+                                            <textarea class="form-control bg-dark text-light border-secondary" rows="4">Goodbye {user}! We're sad to see you go. Hope you'll rejoin us soon!</textarea>
+                                            <small class="text-muted">Variables: {user}, {server}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Embed Settings -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card bg-glass h-100">
+                                    <div class="card-body">
+                                        <h5 class="mb-3">Embed Appearance</h5>
+                                        
+                                        <div class="row mb-3">
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Embed Color</label>
+                                                    <input type="color" class="form-control form-control-color bg-dark border-secondary" value="#6558F5">
+                                                </div>
+                                                
+                                                <div class="form-check mb-3">
+                                                    <input class="form-check-input" type="checkbox" id="show-avatar" checked>
+                                                    <label class="form-check-label" for="show-avatar">Show User Avatar</label>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-md-6">
+                                                <div class="form-check mb-3">
+                                                    <input class="form-check-input" type="checkbox" id="show-timestamp" checked>
+                                                    <label class="form-check-label" for="show-timestamp">Show Timestamp</label>
+                                                </div>
+                                                
+                                                <div class="form-check mb-3">
+                                                    <input class="form-check-input" type="checkbox" id="show-membercount">
+                                                    <label class="form-check-label" for="show-membercount">Show Member Count Field</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Auto Role Tab -->
+                    <div class="tab-pane fade" id="nav-autorole" role="tabpanel" aria-labelledby="nav-autorole-tab">
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <h4 class="gradient-text mb-4">Auto Role Settings</h4>
+                            </div>
+                        </div>
+                        
+                        <!-- Auto Role Settings -->
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <div class="card bg-glass h-100">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center mb-4">
+                                            <h5 class="mb-0">Auto Role Assignment</h5>
+                                            <label class="feature-toggle">
+                                                <input type="checkbox" checked>
+                                                <span class="slider"></span>
+                                            </label>
+                                        </div>
+                                        
+                                        <div class="mb-4">
+                                            <label class="form-label">Default Roles for New Members</label>
+                                            <select class="form-select bg-dark text-light border-secondary mb-2" multiple size="5">
+                                                <option selected>Member</option>
+                                                <option>New User</option>
+                                                <option>Visitor</option>
+                                                <option>Level 1</option>
+                                                <option>Unverified</option>
+                                            </select>
+                                            <small class="text-muted">Selected roles will be automatically assigned to new members</small>
+                                        </div>
+                                        
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" id="apply-after-verify">
+                                            <label class="form-check-label" for="apply-after-verify">Apply roles only after verification</label>
+                                        </div>
+                                        
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="checkbox" id="remove-unverified">
+                                            <label class="form-check-label" for="remove-unverified">Remove unverified role after verification</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Reaction Roles -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card bg-glass h-100">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center mb-4">
+                                            <h5 class="mb-0">Reaction Roles</h5>
+                                            <label class="feature-toggle">
+                                                <input type="checkbox" checked>
+                                                <span class="slider"></span>
+                                            </label>
+                                        </div>
+                                        
+                                        <div class="table-responsive mb-3">
+                                            <table class="table table-dark">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Emoji</th>
+                                                        <th>Role</th>
+                                                        <th>Channel</th>
+                                                        <th>Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>🎮</td>
+                                                        <td>Gamer</td>
+                                                        <td>#role-selection</td>
+                                                        <td><button class="btn btn-sm btn-danger">Delete</button></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>🎨</td>
+                                                        <td>Artist</td>
+                                                        <td>#role-selection</td>
+                                                        <td><button class="btn btn-sm btn-danger">Delete</button></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>📚</td>
+                                                        <td>Bookworm</td>
+                                                        <td>#role-selection</td>
+                                                        <td><button class="btn btn-sm btn-danger">Delete</button></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        
+                                        <button class="btn btn-primary">Add Reaction Role</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    </div>
+</section>
+
+<section class="cta-features py-5 text-center" style="position: relative; overflow: hidden;">
+    <div class="blur-circle blur-circle-purple" style="width: 400px; height: 400px; top: -150px; left: -100px;"></div>
+    <div class="blur-circle blur-circle-pink" style="width: 400px; height: 400px; bottom: -150px; right: -100px;"></div>
+    <div class="container position-relative py-3">
+        <h2 class="gradient-text fw-bold mb-4">Experience These Features Today</h2>
+        <p class="lead mb-4">Add JoeA to your Discord server and start managing with powerful tools</p>
+        <a href="https://discord.com/api/oauth2/authorize?client_id=1353473608059584515&permissions=8&scope=bot" class="btn btn-primary btn-lg px-5">
+            <i class="fab fa-discord me-2"></i> Add to Discord
+        </a>
+    </div>
+</section>
+
+<script>
+    // Initialize toggle switches with functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        // Create animation for saving settings
+        const saveBtn = document.querySelector('.btn-primary');
+        if (saveBtn) {
+            saveBtn.addEventListener('click', function() {
+                this.innerHTML = '<i class="fas fa-spin fa-spinner me-2"></i> Saving...';
+                
+                setTimeout(() => {
+                    this.innerHTML = '<i class="fas fa-check me-2"></i> Saved!';
+                    
+                    setTimeout(() => {
+                        this.innerHTML = '<i class="fas fa-save me-2"></i> Save Changes';
+                    }, 2000);
+                }, 1500);
+            });
+        }
+        
+        // Handle toggle switches
+        const toggles = document.querySelectorAll('.feature-toggle input');
+        toggles.forEach(toggle => {
+            toggle.addEventListener('change', function() {
+                const featureName = this.closest('.d-flex').querySelector('h5').textContent;
+                console.log(`Feature "${featureName}" is now ${this.checked ? 'enabled' : 'disabled'}`);
+            });
+        });
+    });
+</script>
+{% endblock %}

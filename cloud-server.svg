@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100" width="200" height="100">
+  <!-- Cloud -->
+  <path d="M160,45 C160,36.7 153.3,30 145,30 C141.9,30 139,30.8 136.5,32.3 C132.9,25 125.4,20 116.5,20 C105.7,20 96.8,28.2 96.1,38.7 C88.2,40.4 82.5,47.4 82.5,55.8 C82.5,65.7 90.5,73.7 100.4,73.7 L153.3,73.7 C162.5,73.7 170,66.2 170,57 C170,51.3 166,46.5 160,45 Z" fill="#5865F2" />
+  
+  <!-- Server 1 -->
+  <rect x="90" y="45" width="60" height="12" rx="2" fill="#1A1C21" />
+  <circle cx="97" cy="51" r="2" fill="#57F287" />
+  <rect x="102" y="49" width="20" height="4" rx="1" fill="#FFFFFF" />
+  <rect x="130" y="49" width="10" height="4" rx="1" fill="#FFFFFF" />
+  
+  <!-- Server 2 -->
+  <rect x="90" y="60" width="60" height="12" rx="2" fill="#1A1C21" />
+  <circle cx="97" cy="66" r="2" fill="#57F287" />
+  <rect x="102" y="64" width="20" height="4" rx="1" fill="#FFFFFF" />
+  <rect x="130" y="64" width="10" height="4" rx="1" fill="#FFFFFF" />
+  
+  <!-- Server Rack -->
+  <rect x="85" y="40" width="70" height="40" rx="3" stroke="#1A1C21" stroke-width="2" fill="none" />
+  <line x1="85" y1="57" x2="155" y2="57" stroke="#1A1C21" stroke-width="2" />
+  
+  <!-- Connection lines -->
+  <path d="M50,50 C60,50 70,50 80,50" stroke="#FFFFFF" stroke-width="2" stroke-dasharray="4 2" />
+  <circle cx="50" cy="50" r="5" fill="#FFFFFF" />
+  <path d="M30,65 C40,60 50,55 60,50" stroke="#FFFFFF" stroke-width="2" stroke-dasharray="4 2" />
+  <circle cx="30" cy="65" r="5" fill="#FFFFFF" />
+  <path d="M50,30 C55,35 60,40 65,45" stroke="#FFFFFF" stroke-width="2" stroke-dasharray="4 2" />
+  <circle cx="50" cy="30" r="5" fill="#FFFFFF" />
+  
+  <!-- Data symbols -->
+  <text x="45" y="52" font-family="Monospace" font-size="8" fill="#FFFFFF">010</text>
+  <text x="25" y="67" font-family="Monospace" font-size="8" fill="#FFFFFF">101</text>
+  <text x="45" y="32" font-family="Monospace" font-size="8" fill="#FFFFFF">110</text>
+</svg>

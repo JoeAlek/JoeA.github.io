@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Background Circle -->
+  <circle cx="100" cy="100" r="100" fill="#5865F2" />
+  
+  <!-- Face Shape -->
+  <circle cx="100" cy="85" r="60" fill="#F0D0B5" />
+  
+  <!-- Hair -->
+  <path d="M40,80 C40,55 70,30 100,30 C130,30 160,55 160,80 C160,80 160,65 100,65 C40,65 40,80 40,80 Z" fill="#3A3025" />
+  <path d="M40,80 C40,80 35,40 100,40 C165,40 160,80 160,80 C160,80 155,50 100,50 C45,50 40,80 40,80 Z" fill="#3A3025" />
+  
+  <!-- Eyes -->
+  <ellipse cx="75" cy="80" rx="8" ry="6" fill="#302010" />
+  <ellipse cx="125" cy="80" rx="8" ry="6" fill="#302010" />
+  <ellipse cx="75" cy="79" rx="2" ry="2" fill="#FFFFFF" />
+  <ellipse cx="125" cy="79" rx="2" ry="2" fill="#FFFFFF" />
+  
+  <!-- Eyebrows -->
+  <path d="M65,70 C75,65 85,70 85,70" stroke="#3A3025" stroke-width="2" fill="none" />
+  <path d="M115,70 C125,65 135,70 135,70" stroke="#3A3025" stroke-width="2" fill="none" />
+  
+  <!-- Nose -->
+  <path d="M97,80 C100,90 103,90 103,95 C103,100 100,105 97,105 C94,105 91,100 91,95 C91,90 94,90 97,80" fill="#E0C0A0" />
+  
+  <!-- Mouth -->
+  <path d="M80,110 C90,118 110,118 120,110" stroke="#C08068" stroke-width="2" fill="none" />
+  
+  <!-- Beard/Stubble -->
+  <path d="M70,115 C90,125 110,125 130,115 C130,125 110,140 90,140 C70,140 70,125 70,115 Z" fill="#3A3025" opacity="0.15" />
+  
+  <!-- Neck -->
+  <path d="M80,140 L80,160 L120,160 L120,140 Z" fill="#E0C0A0" />
+  
+  <!-- Shirt Collar -->
+  <path d="M60,160 L80,160 L80,140 C60,150 60,160 60,160 Z" fill="#5865F2" />
+  <path d="M140,160 L120,160 L120,140 C140,150 140,160 140,160 Z" fill="#5865F2" />
+  
+  <!-- Shirt -->
+  <rect x="60" y="160" width="80" height="40" fill="#5865F2" />
+  
+  <!-- Glasses -->
+  <rect x="65" y="72" width="20" height="12" rx="3" ry="3" fill="none" stroke="#333333" stroke-width="2" />
+  <rect x="115" y="72" width="20" height="12" rx="3" ry="3" fill="none" stroke="#333333" stroke-width="2" />
+  <line x1="85" y1="78" x2="115" y2="78" stroke="#333333" stroke-width="2" />
+</svg>

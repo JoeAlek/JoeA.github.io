@@ -1,0 +1,154 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<section class="commands-hero bg-dark text-white py-5">
+    <div class="container">
+        <div class="text-center">
+            <h1 class="display-5 fw-bold mb-4">Bot Commands</h1>
+            <p class="lead mb-0">Explore all the commands available in JoeA Discord Bot</p>
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <div class="card bg-dark border-secondary">
+                    <div class="card-body">
+                        <h2 class="card-title mb-4">Available Commands</h2>
+                        
+                        <!-- General Commands -->
+                        <h3 class="text-info mt-4 mb-3">General Commands</h3>
+                        <div class="table-responsive">
+                            <table class="table table-dark table-striped table-hover border-secondary">
+                                <thead class="table-info">
+                                    <tr>
+                                        <th class="text-dark">Command</th>
+                                        <th class="text-dark">Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for command in general_commands %}
+                                    <tr>
+                                        <td><code class="bg-dark text-info">{{ command.name }}</code></td>
+                                        <td class="text-light">{{ command.description }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <!-- Moderation Commands -->
+                        <h3 class="text-danger mt-5 mb-3">Moderation Commands</h3>
+                        <div class="table-responsive">
+                            <table class="table table-dark table-striped table-hover border-secondary">
+                                <thead class="table-danger">
+                                    <tr>
+                                        <th class="text-dark">Command</th>
+                                        <th class="text-dark">Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for command in moderation_commands %}
+                                    <tr>
+                                        <td><code class="bg-dark text-danger">{{ command.name }}</code></td>
+                                        <td class="text-light">{{ command.description }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="alert alert-primary mt-4">
+                            <h4 class="alert-heading"><i class="fas fa-info-circle me-2"></i>Commands Usage</h4>
+                            <p>All commands are prefixed with <code>!</code> character. For example, to register with the bot, type <code>!register</code> in your Discord server.</p>
+                            <p class="mb-0">Parameters in square brackets <code>[like this]</code> are optional or variable inputs. For example, <code>!register [info]</code> means you can simply type <code>!register</code> or add information like <code>!register I'm a Discord user from Canada</code>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5 bg-dark-subtle">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <div class="card bg-dark border-secondary">
+                    <div class="card-body">
+                        <h3 class="card-title mb-4">Command Categories</h3>
+                        
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="card bg-dark-subtle h-100">
+                                    <div class="card-body">
+                                        <h4><i class="fas fa-user-plus text-primary me-2"></i>User Management</h4>
+                                        <ul class="list-unstyled">
+                                            <li class="mb-2"><code>!register</code> - Register with the bot</li>
+                                            <li class="mb-2"><code>!profile</code> - View your profile</li>
+                                            <li class="mb-2"><code>!info</code> - List registered users</li>
+                                            <li><code>!role</code> - Manage user roles (admin)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card bg-dark-subtle h-100">
+                                    <div class="card-body">
+                                        <h4><i class="fas fa-robot text-primary me-2"></i>AI Interaction</h4>
+                                        <ul class="list-unstyled">
+                                            <li class="mb-2"><code>!chat</code> - Chat with the AI</li>
+                                            <li class="mb-2"><code>!translate</code> - Translate text</li>
+                                            <li class="mb-2"><code>!news</code> - Get today's news</li>
+                                            <li><code>!fact</code> - Get random facts</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card bg-dark-subtle h-100">
+                                    <div class="card-body">
+                                        <h4><i class="fas fa-tools text-primary me-2"></i>Utilities</h4>
+                                        <ul class="list-unstyled">
+                                            <li class="mb-2"><code>!calc</code> - Calculate expressions</li>
+                                            <li class="mb-2"><code>!weather</code> - Check weather</li>
+                                            <li class="mb-2"><code>!tdih</code> - This day in history</li>
+                                            <li><code>!commands</code> - Show command list</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card bg-dark-subtle h-100">
+                                    <div class="card-body">
+                                        <h4><i class="fas fa-shield-alt text-primary me-2"></i>Moderation</h4>
+                                        <ul class="list-unstyled">
+                                            <li class="mb-2"><code>!ban</code> - Ban a user from the server</li>
+                                            <li class="mb-2"><code>!unban</code> - Remove a ban on a user</li>
+                                            <li class="mb-2"><code>!kick</code> - Kick a user from the server</li>
+                                            <li class="mb-2"><code>!slowmode</code> - Set channel slowmode</li>
+                                            <li class="mb-2"><code>!clear</code> - Delete messages</li>
+                                            <li class="mb-2"><code>!role</code> - Add roles to users</li>
+                                            <li><code>!rerole</code> - Remove roles from users</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-commands py-5 text-center">
+    <div class="container">
+        <h2 class="mb-4">Ready to try these commands?</h2>
+        <p class="lead mb-4">Add JoeA to your Discord server and start exploring all these powerful features</p>
+        <a href="https://discord.com/api/oauth2/authorize?client_id=1353473608059584515&permissions=8&scope=bot" class="btn btn-primary btn-lg px-5">Add to Discord</a>
+    </div>
+</section>
+{% endblock %}
